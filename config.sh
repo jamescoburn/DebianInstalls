@@ -43,6 +43,26 @@ chmod u-wx,go-rwx /boot/grub/grub.cfg
 /bin/cat << EOT >/etc/security/limits.d/01_custom
 *\thard\tcore\t0
 EOT
+
+# Command Line Warning Banners
+/bin/mv /etc/motd /etc/motd.orig
+/bin/mv /etc/issue /etc/issue.orig
+/bin/cat << EOT >/etc/issue
+
+WARNING: To protect the system from fraud and abuse, activities
+on this system are monitored and subject to audit. Use of this
+system is expressed consent to monitor.
+
+EOT
+
+/bin/mv /etc/issue.net /etc/issue.net.orig
+/bin/cat << EOT >/etc/issue.net
+
+WARNING: To protect the system from fraud and abuse, activities
+on this system are monitored and subject to audit. Use of this
+system is expressed consent to monitor.
+
+EOT
 }
 
 
