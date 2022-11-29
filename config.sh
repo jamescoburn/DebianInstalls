@@ -47,7 +47,7 @@ EOT
 /bin/printf " kernel.randomize_va_space = 2 " >> /etc/sysctl.d/60-kernel_sysctl.conf
 /sbin/sysctl -w kernel.randomize_va_space=2
 /bin/cat << EOT >/etc/security/limits.d/01_custom
-*\thard\tcore\t0
+*   hard    core    0
 EOT
 
 # Command Line Warning Banners
