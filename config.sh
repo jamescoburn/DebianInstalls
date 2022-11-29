@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 {
+# Disable cramfs
+/bin/cat << EOT >/etc/modprobe.d/cramfs.conf
+install cramfs /bin/false
+blacklist cramfs
+EOT
+    
 # Disable squashfs
 /bin/cat << EOT >/etc/modprobe.d/squashfs.conf
 install squashfs /bin/false
