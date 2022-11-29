@@ -36,6 +36,13 @@ password pbkdf2 root grub.pbkdf2.sha512.10000.080D3601C9F8BE1447DDAAA555D68D3952
 EOF
 EOT
 chmod u-wx,go-rwx /boot/grub/grub.cfg
+
+# Additional Process Hardening
+/bin/printf " kernel.randomize_va_space = 2 " >> /etc/sysctl.d/60-kernel_sysctl.conf
+/sbin/sysctl -w kernel.randomize_va_space=2
+/bin/cat << EOT >/etc/security/limits.d/01_custom
+*\thard\tcore\t0
+EOT
 }
 
 
