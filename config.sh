@@ -28,6 +28,13 @@ blacklist usb-storage
 EOT
 /sbin/modprobe -r usb-storage
 
+# Disable dccp
+/bin/cat << EOT >/etc/modprobe.d/dccp.conf
+install dccp /bin/false
+blacklist dccp
+EOT
+/sbin/modprobe -r dccp
+
 # File system configuration
 /bin/sed -ri 's/^\s*([^#]+\s+\/tmp\s+)(\S+\s+)(\S+)?(\s+[0-9]\s+[0-9].*)$/\1\2\3,noexec\4/' /etc/fstab
 /bin/mount -o remount /tmp
