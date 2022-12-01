@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 {
+# secondary account to ssh and sudoers groups
+adduser jamesc ssh
+adduser jamesc sudo
+
 # Disable cramfs
 /bin/cat << EOT >/etc/modprobe.d/cramfs.conf
 install cramfs /bin/false
@@ -97,7 +101,6 @@ on this system are monitored and subject to audit. Use of this
 system is expressed consent to monitor.
 
 EOT
-}
 
 # Configure systemd-timesyncd
 /bin/sed -i "s/#NTP=/NTP=0.debian.pool.ntp.org 1.debian.pool.ntp.org /g" /etc/systemd/timesyncd.conf
@@ -105,3 +108,5 @@ EOT
 
 # Uninstalled/purge telnet client
 apt purge telnet
+
+}
