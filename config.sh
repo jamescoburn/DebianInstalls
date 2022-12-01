@@ -49,6 +49,13 @@ blacklist rds
 EOT
 /sbin/modprobe -r rds
 
+# Disable tipc
+/bin/cat << EOT >/etc/modprobe.d/tipc.conf
+install tipc /bin/false
+blacklist tipc
+EOT
+/sbin/modprobe -r tipc
+
 # File system configuration
 /bin/sed -ri 's/^\s*([^#]+\s+\/tmp\s+)(\S+\s+)(\S+)?(\s+[0-9]\s+[0-9].*)$/\1\2\3,noexec\4/' /etc/fstab
 /bin/mount -o remount /tmp
