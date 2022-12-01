@@ -35,6 +35,13 @@ blacklist dccp
 EOT
 /sbin/modprobe -r dccp
 
+# Disable sctp
+/bin/cat << EOT >/etc/modprobe.d/sctp.conf
+install sctp /bin/false
+blacklist sctp
+EOT
+/sbin/modprobe -r sctp
+
 # File system configuration
 /bin/sed -ri 's/^\s*([^#]+\s+\/tmp\s+)(\S+\s+)(\S+)?(\s+[0-9]\s+[0-9].*)$/\1\2\3,noexec\4/' /etc/fstab
 /bin/mount -o remount /tmp
