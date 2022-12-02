@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-{
+
 # secondary account to ssh and sudoers groups
 adduser jamesc ssh
 adduser jamesc sudo
@@ -76,12 +76,12 @@ EOT
 /bin/chmod u-wx,go-rwx /boot/grub/grub.cfg
 
 # Additional Process Hardening
-/bin/printf "kernel.randomize_va_space = 2" >> /etc/sysctl.d/60-kernel_sysctl.conf
+/bin/printf "kernel.randomize_va_space = 2\n" >> /etc/sysctl.d/60-kernel_sysctl.conf
 /sbin/sysctl -w kernel.randomize_va_space=2
 /bin/cat << EOT >/etc/security/limits.d/01_custom
 *   hard    core    0
 EOT
-/bin/printf "fs.suid_dumpable = 0" >> /etc/sysctl.d/61-coredumps_sysctl.conf
+/bin/printf "fs.suid_dumpable = 0\n" >> /etc/sysctl.d/61-coredumps_sysctl.conf
 /sbin/sysctl -w fs.suid_dumpable=0
 
 # Command Line Warning Banners
@@ -111,4 +111,8 @@ EOT
 # Uninstalled/purge telnet client
 apt purge -y -q telnet
 
-}
+# Disable IPv6
+/bin/printf "net.ipv6.conf.all.disable_ipv6 = 1\nnet.ipv6.conf.default.disable_ipv6 = 1\n" >> /etc/sysctl.d/60-disable_ipv6.conf
+/sbin/sysctl -w net.ipv6.conf.all.disable_ipv6=1
+/sbin/sysctl -w net.ipv6.conf.default.disable_ipv6=1
+/sbin/sysctl -w net.ipv6.route.flush=1
