@@ -194,11 +194,23 @@ sudo ./audit_ensure-is-not-installed-rsync-service.sh
 
 # 2.3 - Client Services
 # 2.3.1 - Ensure NIS Client is not installed
+sudo ./audit_ensure-is-not-installed-nis-client.sh
+
 # 2.3.1 - Ensure rsh client is not installed
+sudo ./audit_ensure-is-not-installed-rsh-client.sh
+
 # 2.3.1 - Ensure talk client is not installed
+sudo ./audit_ensure-is-not-installed-talk-client.sh
+
 # 2.3.1 - Ensure telnet client is not installed
+sudo ./audit_ensure-is-not-installed-telnet-client.sh
+
 # 2.3.1 - Ensure LDAP client is not installed
+sudo ./audit_ensure-is-not-installed-ldap-client.sh
+
 # 2.3.1 - Ensure RPC is not installed
+sudo ./audit_ensure-is-not-installed-rpc.sh
+
 # 2.4 - Ensure nonessential services are removed or masked
 
 # 3 - Network Configuration
@@ -278,20 +290,3 @@ sudo ./audit_ipforwarding.sh
 # 3.5.3.3.2 - 
 # 3.5.3.3.3 - 
 # 3.5.3.3.4 - 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
