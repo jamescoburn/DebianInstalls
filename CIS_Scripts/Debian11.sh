@@ -67,7 +67,7 @@ SELECT_PROFILE
 # 1.1.1 - Disable unused filesystems
 RN="1.1.1.1"
 RNA="Ensure mounting of cramfs filesystems is disabled"
-profile=""
+profile="L1S L1W"
 REC=""
 total_recommendations=$((total_recommendations+1))
 runrec
