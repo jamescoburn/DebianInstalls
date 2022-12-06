@@ -61,3 +61,13 @@ SELECT_PROFILE
 # Recommediations This is where a BM specific script begins.
 
 # Generated for specific Benchmark
+
+# 1 - Initial Setup
+# 1.1 - Filesystem Configuration
+# 1.1.1 - Disable unused filesystems
+RN="1.1.1.1"
+RNA="Ensure mounting of cramfs filesystems is disabled"
+profile=""
+REC=""
+total_recommendations=$((total_recommendations+1))
+runrec
