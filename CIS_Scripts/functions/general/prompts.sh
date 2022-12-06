@@ -44,7 +44,7 @@ SELECT_PROFILE()
                 ;;
         esac
 	}
-	#if run_profile doesn't exist, or isn't set to something from profile_options, propmt for user selection
+	#if run_profile doesn't exist, or isn't set to something from profile_options, prompt for user selection
     if [ -z "$run_profile" ]; then
         request_profile
     else
