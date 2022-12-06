@@ -68,6 +68,6 @@ SELECT_PROFILE
 RN="1.1.1.1"
 RNA="Ensure mounting of cramfs filesystems is disabled"
 profile="L1S L1W"
-REC=""
+REC="cramfs_filesystem_disabled"
 total_recommendations=$((total_recommendations+1))
 runrec
