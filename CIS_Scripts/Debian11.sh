@@ -47,9 +47,6 @@ BANR
 # Ensure script is being run as root
 ROOTUSRCK
 
-# Display the terms of use
-# terms_of_use
-
 # Display CIS Linux Build Kit warning banner
 WARBNR
 
