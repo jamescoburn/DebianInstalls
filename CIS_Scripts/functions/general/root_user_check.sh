@@ -6,6 +6,7 @@ ROOTUSRCK()
 	if [ "$(id -u)" = 0 ]; then
 		echo "- $(date +%D-%H:%M:%S) - User is root - continuing..." | tee -a "$LOG" 2>> "$ELOG"
 	else
+        echo "- $(date +%D-%H:%M:%S) - User is NOT root - exiting..." | tee -a "$LOG" 2>> "$ELOG"
 		exit 1
 	fi
 	echo "- $(date +%D-%H:%M:%S) - root user verification successful" | tee -a "$LOG" 2>> "$ELOG"
