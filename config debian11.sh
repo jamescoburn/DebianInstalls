@@ -51,6 +51,8 @@ EOT
 # Additional Process Hardening
 /bin/printf "kernel.randomize_va_space = 2\n" >> /etc/sysctl.d/60-kernel_sysctl.conf
 /sbin/sysctl -w kernel.randomize_va_space=2
+
+# Restrict Core Dumps
 /bin/cat << EOT >/etc/security/limits.d/01_custom
 *   hard    core    0
 EOT
