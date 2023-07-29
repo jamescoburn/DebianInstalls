@@ -1,5 +1,5 @@
 # Install MongoDB Debian Dependancies
-sudo apt-get install gnupg2 wget -y
+#sudo apt-get install gnupg2 wget -y
 echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/3.6 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
 sudo apt-get update -y
 
