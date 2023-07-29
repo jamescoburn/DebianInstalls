@@ -1,13 +1,8 @@
+########## MONGODB ##########
 # Install MongoDB Debian Dependancies
-#sudo apt-get install gnupg2 wget -y
+sudo wget -O /etc/apt/trusted.gpg.d/mongoserver_key.gpg https://www.mongodb.org/static/pgp/server-3.6.asc
 echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/3.6 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
 sudo apt-get update -y
-
-# Integrate GPG key for MongoDB
-curl -sSL https://www.mongodb.org/static/pgp/server-3.6.asc  -o mongoserver.asc
-gpg --no-default-keyring --keyring ./mongo_key_temp.gpg --import ./mongoserver.asc
-gpg --no-default-keyring --keyring ./mongo_key_temp.gpg --export > ./mongoserver_key.gpg
-sudo mv mongoserver_key.gpg /etc/apt/trusted.gpg.d/
 
 # Run system update
 sudo apt update
@@ -18,3 +13,4 @@ sudo apt install mongodb-org=3.6.23 mongodb-org-server=3.6.23 mongodb-org-shell=
 # Enable and start MongoDB service
 sudo systemctl enable --now mongod
 sudo systemctl status mongod
+
