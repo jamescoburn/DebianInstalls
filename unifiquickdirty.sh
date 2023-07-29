@@ -1,6 +1,6 @@
 #!/bin/bash
 ########## PREREQUISITS ##########
-apt intall sudo wget curl ca-certificates apt-transport-https
+apt install sudo wget curl ca-certificates apt-transport-https
 
 ########## MONGODB ##########
 # Install MongoDB Debian Dependancies
