@@ -1,3 +1,4 @@
+#!/bin/bash
 ########## MONGODB ##########
 # Install MongoDB Debian Dependancies
 sudo wget -O /etc/apt/trusted.gpg.d/mongoserver_key.gpg https://www.mongodb.org/static/pgp/server-3.6.asc
