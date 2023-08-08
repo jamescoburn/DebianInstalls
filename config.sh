@@ -95,15 +95,8 @@ on this system are monitored and subject to audit. Use of this
 system is expressed consent to monitor.
 
 EOT
-
 /bin/mv /etc/issue.net /etc/issue.net.orig
-/bin/cat << EOT >/etc/issue.net
-
-WARNING: To protect the system from fraud and abuse, activities
-on this system are monitored and subject to audit. Use of this
-system is expressed consent to monitor.
-
-EOT
+/bin/cp /etc/issue /etc/issue.net
 
 # Configure systemd-timesyncd
 /bin/sed -i "s/#NTP=/NTP=0.debian.pool.ntp.org 1.debian.pool.ntp.org /g" /etc/systemd/timesyncd.conf
