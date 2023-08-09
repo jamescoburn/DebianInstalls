@@ -112,7 +112,7 @@ apt purge -y -q telnet
 /sbin/sysctl -w net.ipv6.route.flush=1
 
 # Disable Packet Redirect Sending
-/bin/printf "net.ipv4.conf.all.send_redirects = 0\nnet.ipv4.conf.default.send_redirects = 0" >> /etc/sysctl.d/61-disable_send_redirects.conf
+/bin/printf "net.ipv4.conf.all.send_redirects = 0\nnet.ipv4.conf.default.send_redirects = 0" >> /etc/sysctl.d/60-netipv4_sysctl.conf
 /sbin/sysctl -w net.ipv4.conf.all.send_redirects=0
 /sbin/sysctl -w net.ipv4.conf.default.send_redirects=0
 
