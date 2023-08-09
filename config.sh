@@ -127,3 +127,10 @@ apt purge -y -q telnet
 /sbin/ssyctl -w net.ipv4.conf.default.accept_source_route=0
 /sbin/ssyctl -w net.ipv6.conf.all.accept_source_route=0
 /sbin/ssyctl -w net.ipv6.conf.default.accept_source_route=0
+
+# Ensure ICMP redirects are not accepted
+/bin/printf "net.ipv4.conf.all.accept_redirects = 0\nnet.ipv4.conf.default.accept_redirects= 0 \nnet.ipv6.conf.all.accept_redirects = 0\nnet.ipv6.conf.default.accept_redirects = 0" >> /etc/sysctl.d/64-disable_icmp_redirects.conf
+/sbin/sysctl -w net.ipv4.conf.all.accept_redirects=0
+/sbin/sysctl -w net.ipv4.conf.default.accept_redirects=0
+/sbin/sysctl -w net.ipv6.conf.all.accept_redirects=0
+/sbin/sysctl -w net.ipv6.conf.default.accept_redirects=0
