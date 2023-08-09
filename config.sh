@@ -189,10 +189,10 @@ table inet filter {
                 ct state established,related accept
                 ct state invalid drop
 
-                icmp type { echo-request } ip saddr $LAN ct state new accept
+                icmp type { echo-request } ip saddr \$LAN ct state new accept
 
-                tcp dport $TCP-SERVICES ip saddr $LAN ct state new accept
-                #udp dport $UDP-SERVICES ip saddr $LAN ct state new accept
+                tcp dport \$TCP-SERVICES ip saddr \$LAN ct state new accept
+                #udp dport \$UDP-SERVICES ip saddr \$LAN ct state new accept
         }
         chain forward {
                 type filter hook forward priority 0; policy drop;
