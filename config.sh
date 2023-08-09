@@ -148,3 +148,7 @@ apt purge -y -q telnet
 # Ensure broadcast ICMP requests are ignored
 /bin/printf "net.ipv4.icmp_echo_ignore_broadcasts = 1" >> /etc/sysctl.d/67-ignore-broadcast-icmp-requests.conf
 /sbin/sysctl -w net.ipv4.icmp_echo_ignore_broadcasts=1
+
+# Ensure bogus ICMP responses are ignored
+/bin/printf "net.ipv4.icmp_ignore_bogus_error_responses = 1" >> /etc/sysctl.d/68-ignore-bogus-icmp-responses.conf
+/sbin/sysctl -w net.ipv4.icmp_ignore_bogus_error_responses=1
