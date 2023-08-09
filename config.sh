@@ -169,7 +169,7 @@ apt purge -y -q telnet
 
 # Configure nftables
 /bin/mv /etc/nftables.conf /etc/nftables.conf.orig
-/bin/cat << EOT >/etc/modprobe.d/tipc.conf
+/bin/cat << EOT >/etc/nftables.conf
 #!/usr/sbin/nft -f
 
 flush ruleset
@@ -206,4 +206,4 @@ table inet filter {
 }
 EOT
 /bin/systemctl enable nftables.service
-/bin/systemctl state nftables.service
+/bin/systemctl start nftables.service
