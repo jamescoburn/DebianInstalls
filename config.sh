@@ -139,3 +139,9 @@ apt purge -y -q telnet
 /bin/printf "net.ipv4.conf.default.secure_redirects = 0\nnet.ipv4.conf.all.secure_redirects = 0" >> /etc/sysctl.d/65-disable_secure_icmp_redirects.conf
 /sbin/sysctl -w net.ipv4.conf.default.secure_redirects=0
 /sbin/sysctl -w net.ipv4.conf.all.secure_redirects=0
+
+# Ensure suspicious packets are logged
+/bin/printf "net.ipv4.conf.all.log_martians = 1\nnet.ipv4.conf.default.log_martians = 1" >> /etc/sysctl.d/66-log-suspicious-packets.conf
+/sbin/sysctl -w net.ipv4.conf.all.log_martians=1
+/sbin/sysctl -w net.ipv4.conf.default.log_martians=1
+
