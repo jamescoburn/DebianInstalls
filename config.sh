@@ -166,3 +166,44 @@ apt purge -y -q telnet
 /bin/printf "net.ipv6.conf.all.accept_ra = 0\nnet.ipv6.conf.default.accept_ra = 0" >> /etc/sysctl.d/70-enable-ipv6-router-advertisements-not-accepted.conf
 /sbin/sysctl -w net.ipv6.conf.all.accept_ra=0
 /sbin/sysctl -w net.ipv6.conf.default.accept_ra=0
+
+# Configure nftables
+/bin/mv /etc/nftables.conf /etc/nftables.conf.orig
+/bin/cat << EOT >/etc/modprobe.d/tipc.conf
+#!/usr/sbin/nft -f
+
+flush ruleset
+
+define LAN={ 10.0.0.0/8,164.64.0.0/16 }
+define TCP-SERVICES = { 22 }
+define UDP-SERVICES = {}
+
+table inet filter {
+        chain input {
+                type filter hook input priority 0; policy drop;
+
+                iif lo accept
+                ip saddr 127.0.0.0/8 counter drop
+                ip6 saddr ::1 counter drop
+
+                ct state established,related accept
+                ct state invalid drop
+
+                icmp type { echo-request } ip saddr $LAN ct state new accept
+
+                tcp dport $TCP-SERVICES ip saddr $LAN ct state new accept
+                #udp dport $UDP-SERVICES ip saddr $LAN ct state new accept
+        }
+        chain forward {
+                type filter hook forward priority 0; policy drop;
+        }
+        chain output {
+                type filter hook output priority 0; policy drop;
+
+                ct state new,related,established accept
+                ct state invalid drop
+        }
+}
+EOT
+/bin/systemctl enable nftables.service
+/bin/systemctl state nftables.service
