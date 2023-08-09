@@ -145,3 +145,6 @@ apt purge -y -q telnet
 /sbin/sysctl -w net.ipv4.conf.all.log_martians=1
 /sbin/sysctl -w net.ipv4.conf.default.log_martians=1
 
+# Ensure broadcast ICMP requests are ignored
+/bin/printf "net.ipv4.icmp_echo_ignore_broadcasts = 1" >> /etc/sysctl.d/67-ignore-broadcast-icmp-requests.conf
+/sbin/sysctl -w net.ipv4.icmp_echo_ignore_broadcasts=1
