@@ -166,7 +166,7 @@ apt purge -y -q telnet
 /sbin/sysctl -w net.ipv4.tcp_syncookies=1
 
 # Ensure IPv6 router advertisements are not accepted
-/bin/printf "net.ipv6.conf.all.accept_ra = 0\nnet.ipv6.conf.default.accept_ra = 0" >> /etc/sysctl.d/70-enable-ipv6-router-advertisements-not-accepted.conf
+/bin/printf "net.ipv6.conf.all.accept_ra = 0\nnet.ipv6.conf.default.accept_ra = 0" >> /etc/sysctl.d/60-netipv6_sysctl.conf
 /sbin/sysctl -w net.ipv6.conf.all.accept_ra=0
 /sbin/sysctl -w net.ipv6.conf.default.accept_ra=0
 
