@@ -123,7 +123,8 @@ apt purge -y -q telnet
 /sbin/sysctl -w net.ipv6.conf.all.forwarding=0
 
 # Ensure source routed packets are not accepted
-/bin/printf "net.ipv4.conf.all.accept_source_route = 0\nnet.ipv4.conf.default.accept_source_route = 0\nnet.ipv6.conf.all.accept_source_route = 0\nnet.ipv6.conf.default.accept_source_route = 0" >> /etc/sysctl.d/63-disable_source_routed_packets.conf
+/bin/printf "net.ipv4.conf.all.accept_source_route = 0\nnet.ipv4.conf.default.accept_source_route = 0" >> /etc/sysctl.d/60-netipv4_sysctl.conf
+/bin/printf "net.ipv6.conf.all.accept_source_route = 0\nnet.ipv6.conf.default.accept_source_route = 0" >> /etc/sysctl.d/60-netipv6_sysctl.conf
 /sbin/sysctl -w net.ipv4.conf.all.accept_source_route=0
 /sbin/ssyctl -w net.ipv4.conf.default.accept_source_route=0
 /sbin/ssyctl -w net.ipv6.conf.all.accept_source_route=0
