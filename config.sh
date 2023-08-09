@@ -10,14 +10,14 @@ install cramfs /bin/false
 blacklist cramfs
 EOT
 /sbin/modprobe -r cramfs
-    
+
 # Disable squashfs
 /bin/cat << EOT >/etc/modprobe.d/squashfs.conf
 install squashfs /bin/false
 blacklist squashfs
 EOT
 /sbin/modprobe -r squashfs
-    
+
 # Disable udf
 /bin/cat << EOT >/etc/modprobe.d/udf.conf
 install udf /bin/false
@@ -106,7 +106,7 @@ EOT
 apt purge -y -q telnet
 
 # Disable IPv6
-/bin/printf "net.ipv6.conf.all.disable_ipv6 = 1\nnet.ipv6.conf.default.disable_ipv6 = 1\n" >> /etc/sysctl.d/60-disable_ipv6.conf
+/bin/printf "net.ipv6.conf.all.disable_ipv6 = 1\nnet.ipv6.conf.default.disable_ipv6 = 1\n" >> /etc/sysctl.d/60-netipv6_sysctl.conf
 /sbin/sysctl -w net.ipv6.conf.all.disable_ipv6=1
 /sbin/sysctl -w net.ipv6.conf.default.disable_ipv6=1
 /sbin/sysctl -w net.ipv6.route.flush=1
