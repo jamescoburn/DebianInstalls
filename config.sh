@@ -157,7 +157,7 @@ apt purge -y -q telnet
 /sbin/sysctl -w net.ipv4.icmp_ignore_bogus_error_responses=1
 
 # Ensure Reverse Path Filtering is enabled
-/bin/printf "net.ipv4.conf.all.rp_filter = 1\nnet.ipv4.conf.default.rp_filter = 1" >> /etc/sysctl.d/69-enable-reverse-path-filtering.conf
+/bin/printf "net.ipv4.conf.all.rp_filter = 1\nnet.ipv4.conf.default.rp_filter = 1" >> /etc/sysctl.d/60-netipv4_sysctl.conf
 /sbin/sysctl -w net.ipv4.conf.all.rp_filter=1
 /sbin/sysctl -w net.ipv4.conf.default.rp_filter=1
 
