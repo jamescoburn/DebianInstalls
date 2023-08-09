@@ -153,7 +153,7 @@ apt purge -y -q telnet
 /sbin/sysctl -w net.ipv4.icmp_echo_ignore_broadcasts=1
 
 # Ensure bogus ICMP responses are ignored
-/bin/printf "net.ipv4.icmp_ignore_bogus_error_responses = 1" >> /etc/sysctl.d/68-ignore-bogus-icmp-responses.conf
+/bin/printf "net.ipv4.icmp_ignore_bogus_error_responses = 1" >> /etc/sysctl.d/60-netipv4_sysctl.conf
 /sbin/sysctl -w net.ipv4.icmp_ignore_bogus_error_responses=1
 
 # Ensure Reverse Path Filtering is enabled
