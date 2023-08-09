@@ -144,7 +144,7 @@ apt purge -y -q telnet
 /sbin/sysctl -w net.ipv4.conf.all.secure_redirects=0
 
 # Ensure suspicious packets are logged
-/bin/printf "net.ipv4.conf.all.log_martians = 1\nnet.ipv4.conf.default.log_martians = 1" >> /etc/sysctl.d/66-log-suspicious-packets.conf
+/bin/printf "net.ipv4.conf.all.log_martians = 1\nnet.ipv4.conf.default.log_martians = 1" >> /etc/sysctl.d/60-netipv4_sysctl.conf
 /sbin/sysctl -w net.ipv4.conf.all.log_martians=1
 /sbin/sysctl -w net.ipv4.conf.default.log_martians=1
 
