@@ -90,63 +90,49 @@ Sysctl_Modifications "net.ipv6.conf.default.disable_ipv6 = 1" 60-netipv6_sysctl.
 Sysctl_Modifications "net.ipv6.route.flush = 1" 60-netipv6_sysctl.conf
 
 # Disable Packet Redirect Sending
-/bin/printf "net.ipv4.conf.all.send_redirects = 0\nnet.ipv4.conf.default.send_redirects = 0\n" >> /etc/sysctl.d/60-netipv4_sysctl.conf
-/sbin/sysctl -w net.ipv4.conf.all.send_redirects=0
-/sbin/sysctl -w net.ipv4.conf.default.send_redirects=0
+Sysctl_Modifications "net.ipv4.conf.all.send_redirects = 0" 60-netipv4_sysctl.conf
+Sysctl_Modifications "net.ipv4.conf.default.send_redirects = 0" 60-netipv4_sysctl.conf
 
 # Disable IP Forwarding
-/bin/printf "net.ipv4.ip_forward = 0\n" >> /etc/sysctl.d/60-netipv4_sysctl.conf
-/bin/printf "net.ipv6.conf.all.forwarding = 0\n" >> /etc/sysctl.d/60-netipv6_sysctl.conf
-/sbin/sysctl -w net.ipv4.ip_forward=0
-/sbin/sysctl -w net.ipv6.conf.all.forwarding=0
+Sysctl_Modifications "net.ipv4.ip_forward = 0" 60-netipv4_sysctl.conf
+Sysctl_Modifications "net.ipv6.conf.all.forwarding = 0" 60-netipv6_sysctl.conf
 
 # Ensure source routed packets are not accepted
-/bin/printf "net.ipv4.conf.all.accept_source_route = 0\nnet.ipv4.conf.default.accept_source_route = 0\n" >> /etc/sysctl.d/60-netipv4_sysctl.conf
-/bin/printf "net.ipv6.conf.all.accept_source_route = 0\nnet.ipv6.conf.default.accept_source_route = 0\n" >> /etc/sysctl.d/60-netipv6_sysctl.conf
-/sbin/sysctl -w net.ipv4.conf.all.accept_source_route=0
-/sbin/sysctl -w net.ipv4.conf.default.accept_source_route=0
-/sbin/sysctl -w net.ipv6.conf.all.accept_source_route=0
-/sbin/sysctl -w net.ipv6.conf.default.accept_source_route=0
+Sysctl_Modifications "net.ipv4.conf.all.accept_source_route = 0" 60-netipv4_sysctl.conf
+Sysctl_Modifications "net.ipv4.conf.default.accept_source_route = 0" 60-netipv4_sysctl.conf
+Sysctl_Modifications "net.ipv6.conf.all.accept_source_route = 0" 60-netipv6_sysctl.conf
+Sysctl_Modifications "net.ipv6.conf.default.accept_source_route = 0" 60-netipv6_sysctl.conf
 
 # Ensure ICMP redirects are not accepted
-/bin/printf "net.ipv4.conf.all.accept_redirects = 0\nnet.ipv4.conf.default.accept_redirects= 0\n" >> /etc/sysctl.d/60-netipv4_sysctl.conf
-/bin/printf "net.ipv6.conf.all.accept_redirects = 0\nnet.ipv6.conf.default.accept_redirects = 0\n" >> /etc/sysctl.d/60-netipv6_sysctl.conf
-/sbin/sysctl -w net.ipv4.conf.all.accept_redirects=0
-/sbin/sysctl -w net.ipv4.conf.default.accept_redirects=0
-/sbin/sysctl -w net.ipv6.conf.all.accept_redirects=0
-/sbin/sysctl -w net.ipv6.conf.default.accept_redirects=0
+Sysctl_Modifications "net.ipv4.conf.all.accept_redirects = 0" 60-netipv4_sysctl.conf
+Sysctl_Modifications "net.ipv4.conf.default.accept_redirects= 0" 60-netipv4_sysctl.conf
+Sysctl_Modifications "net.ipv6.conf.all.accept_redirects = 0" 60-netipv6_sysctl.conf
+Sysctl_Modifications "net.ipv6.conf.default.accept_redirects = 0" 60-netipv6_sysctl.conf
 
 # Ensure secure ICMP redirects are not accepted
-/bin/printf "net.ipv4.conf.default.secure_redirects = 0\nnet.ipv4.conf.all.secure_redirects = 0\n" >> /etc/sysctl.d/60-netipv4_sysctl.conf
-/sbin/sysctl -w net.ipv4.conf.default.secure_redirects=0
-/sbin/sysctl -w net.ipv4.conf.all.secure_redirects=0
+Sysctl_Modifications "net.ipv4.conf.default.secure_redirects = 0" 60-netipv4_sysctl.conf
+Sysctl_Modifications "net.ipv4.conf.all.secure_redirects = 0" 60-netipv4_sysctl.conf
 
 # Ensure suspicious packets are logged
-/bin/printf "net.ipv4.conf.all.log_martians = 1\nnet.ipv4.conf.default.log_martians = 1\n" >> /etc/sysctl.d/60-netipv4_sysctl.conf
-/sbin/sysctl -w net.ipv4.conf.all.log_martians=1
-/sbin/sysctl -w net.ipv4.conf.default.log_martians=1
+Sysctl_Modifications "net.ipv4.conf.all.log_martians = 1" 60-netipv4_sysctl.conf
+Sysctl_Modifications "net.ipv4.conf.default.log_martians = 1" 60-netipv4_sysctl.conf
 
 # Ensure broadcast ICMP requests are ignored
-/bin/printf "net.ipv4.icmp_echo_ignore_broadcasts = 1\n" >> /etc/sysctl.d/60-netipv4_sysctl.conf
-/sbin/sysctl -w net.ipv4.icmp_echo_ignore_broadcasts=1
+Sysctl_Modifications "net.ipv4.icmp_echo_ignore_broadcasts = 1" 60-netipv4_sysctl.conf
 
 # Ensure bogus ICMP responses are ignored
-/bin/printf "net.ipv4.icmp_ignore_bogus_error_responses = 1\n" >> /etc/sysctl.d/60-netipv4_sysctl.conf
-/sbin/sysctl -w net.ipv4.icmp_ignore_bogus_error_responses=1
+Sysctl_Modifications "net.ipv4.icmp_ignore_bogus_error_responses = 1" 60-netipv4_sysctl.conf
 
 # Ensure Reverse Path Filtering is enabled
-/bin/printf "net.ipv4.conf.all.rp_filter = 1\nnet.ipv4.conf.default.rp_filter = 1\n" >> /etc/sysctl.d/60-netipv4_sysctl.conf
-/sbin/sysctl -w net.ipv4.conf.all.rp_filter=1
-/sbin/sysctl -w net.ipv4.conf.default.rp_filter=1
+Sysctl_Modifications "net.ipv4.conf.all.rp_filter = 1" 60-netipv4_sysctl.conf
+Sysctl_Modifications "net.ipv4.conf.default.rp_filter = 1" 60-netipv4_sysctl.conf
 
 # Ensure TCP SYN Cookies is enabled
-/bin/printf "net.ipv4.tcp_syncookies = 1\n" >> /etc/sysctl.d/60-netipv4_sysctl.conf
-/sbin/sysctl -w net.ipv4.tcp_syncookies=1
+Sysctl_Modifications "net.ipv4.tcp_syncookies = 1" 60-netipv4_sysctl.conf
 
 # Ensure IPv6 router advertisements are not accepted
-/bin/printf "net.ipv6.conf.all.accept_ra = 0\nnet.ipv6.conf.default.accept_ra = 0\n" >> /etc/sysctl.d/60-netipv6_sysctl.conf
-/sbin/sysctl -w net.ipv6.conf.all.accept_ra=0
-/sbin/sysctl -w net.ipv6.conf.default.accept_ra=0
+Sysctl_Modifications "net.ipv6.conf.all.accept_ra = 0" 60-netipv6_sysctl.conf
+Sysctl_Modifications "net.ipv6.conf.default.accept_ra = 0" 60-netipv6_sysctl.conf
 
 # Configure nftables
 /bin/mv /etc/nftables.conf /etc/nftables.conf.orig
