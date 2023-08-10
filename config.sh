@@ -199,3 +199,9 @@ EOT
 /bin/sed -i "s/#MaxStartups 10:30:100/MaxStartups 10:30:60 /g" /etc/ssh/sshd_config
 /bin/sed -i "s/#LoginGraceTime 2m/LoginGraceTime 1m /g" /etc/ssh/sshd_config
 /bin/sed -i "s/#ClientAliveInterval 0/ClientAliveInterval 15 /g" /etc/ssh/sshd_config
+
+# sudo configuration
+/bin/printf "Defaults\tuse_pty\n" >> /etc/sudoers.d/00_custom
+/bin/printf 'Defaults\tlogfile="/var/log/sudo.log"\n' >> /etc/sudoers.d/00_custom
+/sbin/groupadd sugroup
+#/bin/sed -i "s/# auth       required   pam_wheel.so/auth       required   pam_wheel.so   use_uid   group=sugroup/g" /etc/pam.d/su
