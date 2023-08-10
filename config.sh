@@ -184,5 +184,18 @@ EOT
 /bin/chmod og-rwx /etc/crontab.monthly/
 /bin/chmod og-rwx /etc/cron.d/
 /bin/touch /etc/cron.allow
-chown root:root /etc/cron.allow
-chmod g-wx,o-rwx /etc/cron.allow
+/bin/chown root:root /etc/cron.allow
+/bin/chmod g-wx,o-rwx /etc/cron.allow
+
+# ssh configuration
+/bin/chmod og-rwx /etc/ssh/sshd_config
+/bin/printf "\n# Limit ssh access to group(s) and/or user(s)\nallowgroups ssh" >> /etc/ssh/sshd_config
+/bin/sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin no /g" /etc/ssh/sshd_config
+/bin/sed -i "s/X11Forwarding yes/#X11Forwarding yes /g" /etc/ssh/sshd_config
+/bin/sed -i "/^# Ciphers and keying/a MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,hmac-sha2-512,hmac-sha2-256" /etc/ssh/sshd_config
+/bin/sed -i "s/#AllowTcpForwarding yes/AllowTcpForwarding yes /g" /etc/ssh/sshd_config
+/bin/sed -i "s/#Banner none/Banner /etc/issue.net /g" /etc/ssh/sshd_config
+/bin/sed -i "s/#MaxAuthTries 6/MaxAuthTries 4 /g" /etc/ssh/sshd_config
+/bin/sed -i "s/#MaxStartups 10:30:100/MaxStartups 10:30:60 /g" /etc/ssh/sshd_config
+/bin/sed -i "s/#LoginGraceTime 2m/LoginGraceTime 1m /g" /etc/ssh/sshd_config
+/bin/sed -i "s/#ClientAliveInterval 0/ClientAliveInterval 15 /g" /etc/ssh/sshd_config
