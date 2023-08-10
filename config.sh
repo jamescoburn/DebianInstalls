@@ -65,7 +65,7 @@ Sysctl_Modifications "fs.suid_dumpable = 0" 61-coredumps_sysctl.conf
 EOT
 
 # Command Line Warning Banners
-# /bin/mv /etc/motd /etc/motd.orig
+/bin/mv /etc/motd /etc/motd.orig
 /bin/mv /etc/issue /etc/issue.orig
 /bin/cat << EOT >/etc/issue
 
