@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+function ModprobeDiableAndBlackList()
+{
+        echo install $1 /bin/false >> /etc/modprobe.d/$1.conf
+        echo blacklist $1 >> /etc/modprobe.d/$1.conf
+}
+
 # secondary account to ssh and sudoers groups
 adduser jamesc ssh
 adduser jamesc sudo
