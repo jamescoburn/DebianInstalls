@@ -178,10 +178,10 @@ EOT
 
 # Cron configuration
 /bin/chmod og-rwx /etc/crontab
-/bin/chmod og-rwx /etc/crontab.hourly/
-/bin/chmod og-rwx /etc/crontab.daily/
-/bin/chmod og-rwx /etc/crontab.weekly/
-/bin/chmod og-rwx /etc/crontab.monthly/
+/bin/chmod og-rwx /etc/cron.hourly/
+/bin/chmod og-rwx /etc/cron.daily/
+/bin/chmod og-rwx /etc/cron.weekly/
+/bin/chmod og-rwx /etc/cron.monthly/
 /bin/chmod og-rwx /etc/cron.d/
 /bin/touch /etc/cron.allow
 /bin/chown root:root /etc/cron.allow
