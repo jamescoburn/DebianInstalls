@@ -58,8 +58,8 @@ EOT
 /bin/chmod u-wx,go-rwx /boot/grub/grub.cfg
 
 # Additional Process Hardening
-Sysctl_Modifications "kernel.randomize_va_space = 2\n" 60-kernel_sysctl.conf
-Sysctl_Modifications "fs.suid_dumpable = 0\n" 61-coredumps_sysctl.conf
+Sysctl_Modifications "kernel.randomize_va_space = 2" 60-kernel_sysctl.conf
+Sysctl_Modifications "fs.suid_dumpable = 0" 61-coredumps_sysctl.conf
 /bin/cat << EOT >/etc/security/limits.d/01_custom
 *   hard    core    0
 EOT
@@ -85,10 +85,9 @@ EOT
 apt purge -y -q telnet
 
 # Disable IPv6
-/bin/printf "net.ipv6.conf.all.disable_ipv6 = 1\nnet.ipv6.conf.default.disable_ipv6 = 1\n" >> /etc/sysctl.d/60-netipv6_sysctl.conf
-/sbin/sysctl -w net.ipv6.conf.all.disable_ipv6=1
-/sbin/sysctl -w net.ipv6.conf.default.disable_ipv6=1
-/sbin/sysctl -w net.ipv6.route.flush=1
+Sysctl_Modifications "net.ipv6.conf.all.disable_ipv6 = 1" 60-netipv6_sysctl.conf
+Sysctl_Modifications "net.ipv6.conf.default.disable_ipv6 = 1" 60-netipv6_sysctl.conf
+Sysctl_Modifications "net.ipv6.route.flush = 1" 60-netipv6_sysctl.conf
 
 # Disable Packet Redirect Sending
 /bin/printf "net.ipv4.conf.all.send_redirects = 0\nnet.ipv4.conf.default.send_redirects = 0\n" >> /etc/sysctl.d/60-netipv4_sysctl.conf
