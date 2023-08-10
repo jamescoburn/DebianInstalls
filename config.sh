@@ -58,13 +58,11 @@ EOT
 /bin/chmod u-wx,go-rwx /boot/grub/grub.cfg
 
 # Additional Process Hardening
-/bin/printf "kernel.randomize_va_space = 2\n" >> /etc/sysctl.d/60-kernel_sysctl.conf
-/sbin/sysctl -w kernel.randomize_va_space=2
+Sysctl_Modifications "kernel.randomize_va_space = 2\n" 60-kernel_sysctl.conf
+Sysctl_Modifications "fs.suid_dumpable = 0\n" 61-coredumps_sysctl.conf
 /bin/cat << EOT >/etc/security/limits.d/01_custom
 *   hard    core    0
 EOT
-/bin/printf "fs.suid_dumpable = 0\n" >> /etc/sysctl.d/61-coredumps_sysctl.conf
-/sbin/sysctl -w fs.suid_dumpable=0
 
 # Command Line Warning Banners
 /bin/mv /etc/motd /etc/motd.orig
