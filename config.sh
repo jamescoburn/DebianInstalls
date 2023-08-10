@@ -4,6 +4,7 @@ function ModprobeDisableAndBlackList()
 {
         echo install $1 /bin/false >> /etc/modprobe.d/$1.conf
         echo blacklist $1 >> /etc/modprobe.d/$1.conf
+        /sbin/modprobe -r $1
 }
 
 function Sysctl_Modifications()
