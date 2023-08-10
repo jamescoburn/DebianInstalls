@@ -176,3 +176,13 @@ EOT
 /bin/systemctl enable nftables.service
 /bin/systemctl start nftables.service
 
+# Cron configuration
+/bin/chmod og-rwx /etc/crontab
+/bin/chmod og-rwx /etc/crontab.hourly/
+/bin/chmod og-rwx /etc/crontab.daily/
+/bin/chmod og-rwx /etc/crontab.weekly/
+/bin/chmod og-rwx /etc/crontab.monthly/
+/bin/chmod og-rwx /etc/cron.d/
+/bin/touch /etc/cron.allow
+chown root:root /etc/cron.allow
+chmod g-wx,o-rwx /etc/cron.allow
