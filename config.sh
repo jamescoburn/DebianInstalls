@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function ModprobeDiableAndBlackList()
+function ModprobeDisableAndBlackList()
 {
         echo install $1 /bin/false >> /etc/modprobe.d/$1.conf
         echo blacklist $1 >> /etc/modprobe.d/$1.conf
