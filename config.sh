@@ -176,5 +176,3 @@ EOT
 /bin/systemctl enable nftables.service
 /bin/systemctl start nftables.service
 
-# Auditd configuration
-/bin/sed -i "s/max_log_file_action = ROTATE/max_log_file_action = keep_logs /g" /etc/audit/auditd.conf
