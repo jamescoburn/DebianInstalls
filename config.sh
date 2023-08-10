@@ -18,60 +18,28 @@ adduser jamesc ssh
 adduser jamesc sudo
 
 # Disable cramfs
-/bin/cat << EOT >/etc/modprobe.d/cramfs.conf
-install cramfs /bin/false
-blacklist cramfs
-EOT
-/sbin/modprobe -r cramfs
+ModprobeDisableAndBlackList cramfs
 
 # Disable squashfs
-/bin/cat << EOT >/etc/modprobe.d/squashfs.conf
-install squashfs /bin/false
-blacklist squashfs
-EOT
-/sbin/modprobe -r squashfs
+ModprobeDisableAndBlackList squashfs
 
 # Disable udf
-/bin/cat << EOT >/etc/modprobe.d/udf.conf
-install udf /bin/false
-blacklist udf
-EOT
-/sbin/modprobe -r udf
+ModprobeDisableAndBlackList udf
 
 # Disable usb-storage
-/bin/cat << EOT >/etc/modprobe.d/usb-storage.conf
-install usb-storage /bin/false
-blacklist usb-storage
-EOT
-/sbin/modprobe -r usb-storage
+ModprobeDisableAndBlackList usb-storage
 
 # Disable dccp
-/bin/cat << EOT >/etc/modprobe.d/dccp.conf
-install dccp /bin/false
-blacklist dccp
-EOT
-/sbin/modprobe -r dccp
+ModprobeDisableAndBlackList dccp
 
 # Disable sctp
-/bin/cat << EOT >/etc/modprobe.d/sctp.conf
-install sctp /bin/false
-blacklist sctp
-EOT
-/sbin/modprobe -r sctp
+ModprobeDisableAndBlackList sctp
 
 # Disable rds
-/bin/cat << EOT >/etc/modprobe.d/rds.conf
-install rds /bin/false
-blacklist rds
-EOT
-/sbin/modprobe -r rds
+ModprobeDisableAndBlackList rds
 
 # Disable tipc
-/bin/cat << EOT >/etc/modprobe.d/tipc.conf
-install tipc /bin/false
-blacklist tipc
-EOT
-/sbin/modprobe -r tipc
+ModprobeDisableAndBlackList tipc
 
 # File system configuration
 /bin/sed -ri 's/^\s*([^#]+\s+\/tmp\s+)(\S+\s+)(\S+)?(\s+[0-9]\s+[0-9].*)$/\1\2\3,noexec\4/' /etc/fstab
