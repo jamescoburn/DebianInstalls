@@ -204,4 +204,4 @@ EOT
 /bin/printf "Defaults\tuse_pty\n" >> /etc/sudoers.d/00_custom
 /bin/printf 'Defaults\tlogfile="/var/log/sudo.log"\n' >> /etc/sudoers.d/00_custom
 /sbin/groupadd sugroup
-#/bin/sed -i "s/# auth       required   pam_wheel.so/auth       required   pam_wheel.so   use_uid   group=sugroup/g" /etc/pam.d/su
+/bin/sed -i "15s/# auth       required   pam_wheel.so/auth       required   pam_wheel.so   use_uid   group=sugroup/g" /etc/pam.d/su
