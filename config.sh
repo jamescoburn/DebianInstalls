@@ -48,7 +48,7 @@ ModprobeDisableAndBlackList tipc
 /bin/mount -o remount /dev/shm
 
 # Ensure filesystem integrity regularly checked
-echo "0 5 * * * /usr/sbin/aide --check" | crontab -u root -
+echo "0 5 * * * /usr/sbin/aide.wrapper --config /etc/aide/aide.conf --check" | crontab -u root -
 
 # Secure boot settings
 /bin/cat << EOT >/etc/grub.d/42_custom
