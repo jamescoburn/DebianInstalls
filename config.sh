@@ -47,6 +47,9 @@ ModprobeDisableAndBlackList tipc
 /bin/echo -e "tmpfs\t\t/dev/shm\ttmpfs\tnodev,nosuid,noexec\t0\t0" >> /etc/fstab
 /bin/mount -o remount /dev/shm
 
+# Ensure filesystem integrity regularly checked
+echo "0 5 * * * /usr/sbin/aide --check" | crontab -u root -
+
 # Secure boot settings
 /bin/cat << EOT >/etc/grub.d/42_custom
 #!/bin/sh
