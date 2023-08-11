@@ -51,6 +51,7 @@ ModprobeDisableAndBlackList tipc
 echo "0 5 * * * /usr/sbin/aide.wrapper --config /etc/aide/aide.conf --check" | crontab -u root -
 
 # Secure boot settings
+/bin/sed -i 's/CLASS="--class gnu-linux --class gnu --class os/CLASS="--class gnu-linux --class gnu --class os --unrestricted/' /etc/grub.d/10_linux
 /bin/cat << EOT >/etc/grub.d/42_custom
 #!/bin/sh
 cat <<EOF
